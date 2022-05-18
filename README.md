@@ -60,12 +60,11 @@ Creates a binddn record for FreeIPA
 
 ### installgroups.sh
 
-Install FreeiPA groups
+Install FreeIPA groups
 
 ### migrate.sh
 
 Migrate the database
-
 
 ### mkvolumes.sh
 
