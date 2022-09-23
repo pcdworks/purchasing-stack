@@ -22,8 +22,8 @@ services:
   db:
     image: postgres:13-alpine
     container_name: purchasing-db
-    restart: always
-    env_file: ./variables.env
+    restart: unless-stopped
+    env_file: ./.env
     volumes:
       - purchasing-db:/var/lib/postgresql/data
     networks:
@@ -31,11 +31,16 @@ services:
   web:
     image: pcdworks/purchasing:latest
     container_name: purchasing
-    restart: always
+    restart: unless-stopped
     volumes:
       - purchasing-data:/app/storage
-    env_file: ./variables.env
+    env_file: ./.env
     networks:
       - proxy
+    labels:
+      caddy: "${CADDY_DOMAIN}"
+      caddy.tls: internal
+      caddy.0_reverse_proxy: "{{upstreams 3000}}"
+      caddy.0_reverse_proxy.header_up: X-Real-IP {remote_host}
     depends_on:
       - db
