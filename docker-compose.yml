@@ -39,6 +39,6 @@ services:
       - proxy
     labels:
       caddy: "${CADDY_DOMAIN}"
-      caddy.everse_proxy: "{{upstreams 3000}}"
+      caddy.reverse_proxy: "{{upstreams 3000}}"
     depends_on:
       - db
