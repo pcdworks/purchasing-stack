@@ -39,8 +39,6 @@ services:
       - proxy
     labels:
       caddy: "${CADDY_DOMAIN}"
-      caddy.tls: internal
-      caddy.0_reverse_proxy: "{{upstreams 3000}}"
-      caddy.0_reverse_proxy.header_up: X-Real-IP {remote_host}
+      caddy.everse_proxy: "{{upstreams 3000}}"
     depends_on:
       - db
