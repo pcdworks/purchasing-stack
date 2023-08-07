@@ -38,6 +38,7 @@ services:
     networks:
       - proxy
     labels:
+      com.centurylinklabs.watchtower.enable: false
       caddy: "${CADDY_DOMAIN}"
       caddy.reverse_proxy: "{{upstreams 3000}}"
     depends_on:
