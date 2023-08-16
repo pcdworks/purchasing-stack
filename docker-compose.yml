@@ -17,6 +17,12 @@ volumes:
       o: bind
       type: none
       device: ${PWD}/data
+  purchasing-style:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${PWD}/style
 
 services:
   db:
@@ -34,6 +40,7 @@ services:
     restart: unless-stopped
     volumes:
       - purchasing-data:/app/storage
+      - purchasing-style:/app/public/style
     env_file: ./.env
     networks:
       - proxy
